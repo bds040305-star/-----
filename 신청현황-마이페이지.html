@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신청 현황</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      background: #e2e8f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .status-tracker {
+      background: #f0f7ff;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+    .progress-line {
+      height: 4px;
+      background: #cbd5e1;
+      margin: 12px 0;
+      position: relative;
+    }
+    .progress-fill {
+      width: 50%;
+      height: 100%;
+      background: var(--primary-blue);
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <div class="content">
+    <h2 style="font-size: 18px; margin-bottom: 16px;">마이페이지</h2>
+
+    <div class="profile-section">
+      <div class="avatar">👤</div>
+      <div>
+        <strong style="font-size: 15px;">도윤님</strong>
+        <p style="font-size: 11px; color: #888;">내 조건 프로필 관리</p>
+      </div>
+    </div>
+
+    <strong style="font-size: 14px;">신청 현황</strong>
+
+    <div class="status-tracker">
+      <strong style="font-size: 14px;">수원시 청년 매입임대</strong>
+      <div class="progress-line"><div class="progress-fill"></div></div>
+      <div style="display: flex; justify-content: space-between; font-size: 10px; color: #666;">
+        <span style="color: var(--primary-blue); font-weight: bold;">서류 제출</span>
+        <span>심사 중</span>
+        <span>결과 발표</span>
+      </div>
+      <p style="font-size: 11px; color: var(--point-green); font-weight: bold; margin-top: 12px;">✓ 다음 할 일 : 없음 결과는 9/10 발표 예정</p>
+    </div>
+
+    <strong style="font-size: 14px; margin-top: 16px; display: block;">제출 서류함</strong>
+    <div style="background: #fff; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center;">
+      <span style="font-size: 12px;">📄 가족관계증명서.pdf</span>
+      <span>⬇️</span>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <a href="index.html" class="nav-item"><span class="icon">🏠</span><span>홈</span></a>
+    <a href="custom-conditions.html" class="nav-item"><span class="icon">📖</span><span>맞춤공고</span></a>
+    <a href="schedule.html" class="nav-item"><span class="icon">📅</span><span>내 일정</span></a>
+    <a href="estate-map.html" class="nav-item"><span class="icon">🗺️</span><span>부동산 맵</span></a>
+    <a href="application-status.html" class="nav-item active"><span class="icon">👤</span><span>MY</span></a>
+  </div>
+</div>
+
+</body>
+</html>

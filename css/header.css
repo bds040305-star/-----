@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  justify-content: space-between; /* 로고는 왼쪽, 아이콘은 오른쪽 끝 배치 */
+  align-items: center;            /* 세로 방향 중앙 정렬 (높이 맞춤) */
+  height: 56px;                   /* 헤더 높이 지정 */
+  padding: 0 16px;                /* 좌우 여백 */
+  background-color: #ffffff;      /* 배경색 */
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;            /* 아이콘들끼리도 세로 중앙 정렬 */
+  gap: 8px;
+}
+
+/* 이미지 크기가 깨지는 것을 방지하기 위한 스타일 */
+.header a img {
+  display: block;
+  height: 24px;                   /* 로고 이미지 적절한 높이 지정 */
+}
+
+.header-icons img {
+  width: 24px;                    /* 아이콘 이미지 크기 지정 */
+  height: 24px;
+  cursor: pointer;
+}

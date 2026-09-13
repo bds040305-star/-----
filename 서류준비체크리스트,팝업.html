@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서류 준비 체크리스트</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .check-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .share-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="header">
+    <a href="index.html" style="text-decoration:none; color:black; font-size: 18px;">←</a>
+    <strong style="font-size: 16px;">서류 준비 체크리스트</strong>
+    <div></div>
+  </div>
+
+  <div class="content">
+    <div style="background: #fff; padding: 16px; border-radius: 12px; margin-bottom: 16px;">
+      <span style="font-size: 11px; color: var(--primary-blue); font-weight: bold;">내가 직접 제출</span>
+      <h4 style="margin-top: 4px; font-size: 14px;">신청 전에 준비할 서류</h4>
+
+      <div class="check-item">
+        <div>
+          <input type="checkbox" checked id="doc1">
+          <label for="doc1" style="font-weight: bold; margin-left: 6px;">주민등록등본</label>
+        </div>
+        <span style="font-size: 11px; color: #888;">본인 제출</span>
+      </div>
+      <div class="check-item">
+        <div>
+          <input type="checkbox" id="doc2">
+          <label for="doc2" style="font-weight: bold; margin-left: 6px;">소득증빙서류</label>
+        </div>
+        <span style="font-size: 11px; color: #888;">확인 필요</span>
+      </div>
+    </div>
+
+    <div style="background: #fff; padding: 16px; border-radius: 12px;">
+      <span style="font-size: 11px; color: var(--primary-blue); font-weight: bold;">확인 해야할 것</span>
+      <h4 style="margin-top: 4px; font-size: 14px;">가족 서명이 필요해요</h4>
+      <div style="height: 100px; background: #f1f5f9; border-radius: 8px; margin-top: 12px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 12px;">
+        서명 요청 대기 중
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 16px; background: #fff;">
+    <button onclick="document.getElementById('share-modal').style.display='flex'" class="btn-primary">가족에게 서류 요청보내기</button>
+  </div>
+
+  <!-- 공유 팝업 (5 서류준비 체크리스트 팝업.png) -->
+  <div id="share-modal" class="modal-overlay" style="display:none;">
+    <div class="bottom-sheet">
+      <div class="drag-handle"></div>
+      <div style="display:flex; justify-size: space-between; justify-content:space-between; align-items:center; margin-bottom: 12px;">
+        <span style="font-size: 11px; color: var(--primary-blue); font-weight: bold;">보내는 방법 선택하기</span>
+        <button onclick="document.getElementById('share-modal').style.display='none'" style="background:none; border:none; font-size:18px;">✕</button>
+      </div>
+      <h3 style="font-size: 16px; margin-bottom: 4px;">가족에게 어떻게 보낼까요?</h3>
+      <p style="font-size: 11px; color: #888; margin-bottom: 16px;">앱 없이도 링크로 바로 서명할 수 있어요</p>
+
+      <a href="signature-request.html" class="share-option">
+        <span>💬</span> <span>카카오톡으로 보내기</span>
+      </a>
+      <a href="signature-request.html" class="share-option">
+        <span>✉️</span> <span>문자로 보내기</span>
+      </a>
+      <a href="signature-request.html" class="share-option">
+        <span>🔗</span> <span>링크 복사하기</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

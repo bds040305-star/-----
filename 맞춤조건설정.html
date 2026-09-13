@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>맞춤 조건 설정</title>
+    <link rel="stylesheet" href="./css/common.css">
+    
+    <link rel="stylesheet" href="./css/header.css">
+<link rel="stylesheet" href="./css/footer.css">
+    <style>
+
+        /* ========================================
+           기본 설정
+        ======================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            background: #222;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Apple SD Gothic Neo",
+                "Noto Sans KR",
+                sans-serif;
+
+            color: #111;
+        }
+
+        button,
+        a {
+            font-family: inherit;
+        }
+
+
+        /* ========================================
+           모바일 앱 전체
+        ======================================== */
+
+        .mobile-app {
+            position: relative;
+
+            width: 390px;
+            min-height: 100vh;
+
+            margin: 0 auto;
+
+            background: #fff;
+
+            overflow-x: hidden;
+        }
+
+
+        /* ========================================
+           HEADER
+        ======================================== */
+
+        .header {
+            width: 100%;
+            height: 64px;
+
+            padding: 0 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #fff;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .back-button {
+            width: 21px;
+            height: 28px;
+
+            padding: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            background: transparent;
+
+            color: #111;
+
+            font-size: 32px;
+            font-weight: 300;
+            line-height: 1;
+
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .header-title {
+            margin: 0;
+
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .reset-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 0;
+
+            border: 0;
+            background: transparent;
+
+            color: #777;
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .reset-button span {
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+
+        /* ========================================
+           MAIN
+        ======================================== */
+
+        .content {
+            width: 100%;
+
+            padding: 58px 18px 105px;
+
+            background: #fff;
+        }
+
+
+        /* ========================================
+           안내 카드
+        ======================================== */
+
+        .intro-card {
+            width: 100%;
+            height: 107px;
+
+            padding: 17px 18px;
+
+            background: #f5faf7;
+
+            border: 1px solid #edf1ee;
+            border-radius: 25px;
+        }
+
+        .intro-title {
+            margin: 0;
+
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.35;
+
+            letter-spacing: -0.5px;
+        }
+
+        .intro-title strong {
+            color: #79c600;
+
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .intro-desc {
+            margin: 11px 0 0;
+
+            color: #999;
+
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+
+        /* ========================================
+           진행률
+        ======================================== */
+
+        .progress-wrap {
+            margin: 30px 13px 0;
+        }
+
+        .step-bar {
+            width: 100%;
+            height: 7px;
+
+            background: #eeeeee;
+
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .step-fill {
+            width: 25%;
+            height: 100%;
+
+            background: #0056a8;
+
+            border-radius: 10px;
+        }
+
+        .step-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 7px;
+        }
+
+        .step-number {
+            color: #0056a8;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .step-desc {
+            color: #777;
+
+            font-size: 10px;
+        }
+
+
+        /* ========================================
+           조건 공통
+        ======================================== */
+
+        .condition-section {
+            margin-top: 35px;
+        }
+
+        .condition-section + .condition-section {
+            margin-top: 34px;
+        }
+
+        .section-title {
+            display: block;
+
+            margin: 0 0 14px;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            letter-spacing: -0.5px;
+        }
+
+
+        /* ========================================
+           지역 선택
+        ======================================== */
+
+        .region-line {
+            width: 100%;
+            height: 1.5px;
+
+            margin-bottom: 19px;
+
+            background: #aaa;
+        }
+
+        .region-select {
+            width: 100%;
+            height: 54px;
+
+            padding: 0 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            background: #fff;
+
+            border: 1px solid #d9d9d9;
+            border-radius: 10px;
+
+            color: #222;
+            font-size: 10px;
+
+            cursor: pointer;
+        }
+
+        .region-select .select-arrow {
+            font-size: 17px;
+            font-weight: 300;
+        }
+
+
+        /* ========================================
+           칩 버튼
+        ======================================== */
+
+        .chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .chip {
+            height: 39px;
+
+            padding: 0 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+            border-radius: 8px;
+
+            background: #f1f1f3;
+
+            color: #888;
+
+            font-size: 13px;
+            font-weight: 500;
+
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .chip.active {
+            background: #0056a8;
+
+            color: #fff;
+            font-weight: 700;
+        }
+
+
+        /* ========================================
+           소득분위
+        ======================================== */
+
+        .income-title-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 14px;
+        }
+
+        .income-title-wrap .section-title {
+            margin: 0;
+        }
+
+        .info-button {
+            width: 17px;
+            height: 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0;
+
+            border: 1px solid #888;
+            border-radius: 50%;
+
+            background: #fff;
+
+            color: #777;
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+        .income-box {
+            width: 100%;
+            height: 43px;
+
+            padding: 0 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            border: 1px solid #d9d9d9;
+            border-radius: 10px;
+        }
+
+        .income-label {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .toggle {
+            position: relative;
+
+            width: 39px;
+            height: 20px;
+
+            padding: 0;
+
+            border: 0;
+            border-radius: 20px;
+
+            background: #dce1e5;
+
+            cursor: pointer;
+        }
+
+        .toggle::before {
+            content: "";
+
+            position: absolute;
+
+            top: 2px;
+            left: 2px;
+
+            width: 16px;
+            height: 16px;
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            transition: 0.2s;
+        }
+
+        .toggle.active {
+            background: #0056a8;
+        }
+
+        .toggle.active::before {
+            left: 21px;
+        }
+
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+
+        .bottom-nav {
+            position: fixed;
+
+            bottom: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 390px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            background: #fff;
+
+            border: 1px solid #eeeeee;
+
+            z-index: 100;
+        }
+
+        .nav-item {
+            width: 20%;
+            height: 70px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            gap: 4px;
+
+            color: #aaa;
+
+            font-size: 8px;
+            text-decoration: none;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+
+            display: block;
+
+            object-fit: contain;
+
+            opacity: 0.6;
+        }
+
+        .nav-item span {
+            line-height: 1;
+        }
+
+        .nav-item.active {
+            color: #0056a8;
+            font-weight: 700;
+        }
+
+        .nav-item.active .nav-icon {
+            opacity: 1;
+        }
+
+
+        /* ========================================
+           지역 선택 팝업 오버레이
+        ======================================== */
+
+        .modal-overlay {
+            position: fixed;
+
+            top: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 390px;
+            height: 100vh;
+
+            display: none;
+            align-items: flex-end;
+
+            background: rgba(0, 0, 0, 0.38);
+
+            z-index: 9999;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+
+        /* ========================================
+           지역 선택 바텀시트
+        ======================================== */
+
+        .region-sheet {
+            width: 100%;
+            height: 355px;
+
+            padding: 14px 24px 25px;
+
+            background: #fff;
+
+            border-radius: 26px 26px 0 0;
+
+            animation: sheetUp 0.25s ease-out;
+        }
+
+        @keyframes sheetUp {
+
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+
+        }
+
+        .drag-handle {
+            width: 46px;
+            height: 4px;
+
+            margin: 0 auto 26px;
+
+            background: #dfe3e6;
+
+            border-radius: 10px;
+        }
+
+        .sheet-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            margin-bottom: 19px;
+        }
+
+        .sheet-label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #0066b3;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .sheet-title {
+            margin: 0;
+
+            font-size: 20px;
+            font-weight: 700;
+
+            letter-spacing: -0.7px;
+        }
+
+        .close-button {
+            width: 25px;
+            height: 25px;
+
+            padding: 0;
+
+            border: 0;
+            background: transparent;
+
+            color: #222;
+
+            font-size: 31px;
+            font-weight: 200;
+            line-height: 20px;
+
+            cursor: pointer;
+        }
+
+
+        /* ========================================
+           지역 목록
+        ======================================== */
+
+        .region-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .region-option {
+            width: 100%;
+            height: 49px;
+
+            padding: 0;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            border: 0;
+            background: transparent;
+
+            color: #222;
+
+            font-size: 14px;
+            text-align: left;
+
+            cursor: pointer;
+        }
+
+        .region-pin {
+            width: 18px;
+            height: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1.5px solid #80cf00;
+            border-radius: 50% 50% 50% 0;
+
+            transform: rotate(-45deg);
+        }
+
+        .region-pin::after {
+            content: "";
+
+            width: 5px;
+            height: 5px;
+
+            border: 1px solid #80cf00;
+            border-radius: 50%;
+        }
+
+
+        /* ========================================
+           반응형
+        ======================================== */
+
+        @media (max-width: 390px) {
+
+            body {
+                background: #fff;
+            }
+
+            .mobile-app {
+                width: 100%;
+            }
+
+            .bottom-nav,
+            .modal-overlay {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <div class="mobile-app">
+
+
+        <!-- ========================================
+             HEADER
+        ======================================== -->
+ <header class="header">
+
+            <a href="index.html">
+                <img src="./images/header-icon/logo.png" alt="LH 청약+">
+            </a>
+
+
+            <div class="header-icons">
+
+                <img src="./images/header-icon/call.svg" alt="상담">
+
+                <img src="./images/header-icon/serch.svg" alt="검색">
+
+                <!-- ★ 메뉴 버튼 -->
+                <button type="button" id="menu-open" class="menu-open">
+
+                    <img src="./images/header-icon/ham-btn.svg" alt="메뉴">
+
+                </button>
+
+            </div>
+
+        </header>
+        <header class="header">
+
+            <div class="header-left">
+
+                <a
+                    href="index.html"
+                    class="back-button"
+                    aria-label="뒤로가기">
+
+                    ‹
+
+                </a>
+
+                <h1 class="header-title">
+                    맞춤 조건 설정
+                </h1>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="reset-button"
+                id="reset-button">
+
+                초기화
+                <span>›</span>
+
+            </button>
+
+        </header>
+
+
+
+        <!-- ========================================
+             MAIN
+        ======================================== -->
+
+        <main class="content">
+
+
+            <!-- 안내 카드 -->
+
+            <section class="intro-card">
+
+                <p class="intro-title">
+
+                    나에게 맞는 공고만<br>
+
+                    <strong>
+                        골라볼게요
+                    </strong>
+
+                </p>
+
+                <p class="intro-desc">
+                    조건은 나중에 언제든 바꿀 수 있어요.
+                </p>
+
+            </section>
+
+
+
+            <!-- 진행률 -->
+
+            <div class="progress-wrap">
+
+                <div class="step-bar">
+
+                    <div class="step-fill"></div>
+
+                </div>
+
+
+                <div class="step-info">
+
+                    <span class="step-number">
+                        1 / 4
+                    </span>
+
+                    <span class="step-desc">
+                        조건 4개 중 1개 설정
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 지역
+            ======================================== -->
+
+            <section class="condition-section">
+
+                <label class="section-title">
+                    지역
+                </label>
+
+                <div class="region-line"></div>
+
+
+                <button
+                    type="button"
+                    class="region-select"
+                    id="region-select">
+
+                    <span id="selected-region">
+                        지역을 선택해 주세요
+                    </span>
+
+                    <span class="select-arrow">
+                        ⌄
+                    </span>
+
+                </button>
+
+            </section>
+
+
+
+            <!-- ========================================
+                 임대 유형
+            ======================================== -->
+
+            <section class="condition-section">
+
+                <h2 class="section-title">
+                    임대 유형
+                </h2>
+
+
+                <div
+                    class="chip-group"
+                    id="rent-type-group">
+
+                    <button
+                        type="button"
+                        class="chip active">
+
+                        전세임대
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip">
+
+                        매입 임대
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip">
+
+                        분양
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ========================================
+                 세대 구성
+            ======================================== -->
+
+            <section class="condition-section">
+
+                <h2 class="section-title">
+                    세대 구성
+                </h2>
+
+
+                <div
+                    class="chip-group"
+                    id="household-group">
+
+                    <button
+                        type="button"
+                        class="chip">
+
+                        한부모 가정
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip">
+
+                        청년 1인
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="chip">
+
+                        신혼부부
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ========================================
+                 소득분위
+            ======================================== -->
+
+            <section class="condition-section">
+
+
+                <div class="income-title-wrap">
+
+                    <h2 class="section-title">
+                        소득분위
+                    </h2>
+
+
+                    <button
+                        type="button"
+                        class="info-button"
+                        aria-label="소득분위 안내">
+
+                        i
+
+                    </button>
+
+                </div>
+
+
+                <div class="income-box">
+
+                    <span class="income-label">
+                        모름 자동 확인하기
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="toggle"
+                        id="income-toggle"
+                        aria-label="소득분위 자동 확인"
+                        aria-pressed="false">
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+
+        <!-- ========================================
+             지역 선택 팝업
+        ======================================== -->
+
+        <div
+            class="modal-overlay"
+            id="region-modal">
+
+
+            <div class="region-sheet">
+
+
+                <!-- 손잡이 -->
+
+                <div class="drag-handle"></div>
+
+
+
+                <!-- 팝업 헤더 -->
+
+                <div class="sheet-header">
+
+
+                    <div>
+
+                        <span class="sheet-label">
+                            지역 선택
+                        </span>
+
+                        <h2 class="sheet-title">
+                            어디의 공고를 볼까요?
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="close-button"
+                        id="region-close"
+                        aria-label="팝업 닫기">
+
+                        ×
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- 지역 목록 -->
+
+                <div class="region-list">
+
+
+                    <button
+                        type="button"
+                        class="region-option"
+                        data-region="전국">
+
+                        <span class="region-pin"></span>
+
+                        전국
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="region-option"
+                        data-region="서울특별시">
+
+                        <span class="region-pin"></span>
+
+                        서울특별시
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="region-option"
+                        data-region="경기도">
+
+                        <span class="region-pin"></span>
+
+                        경기도
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="region-option"
+                        data-region="인천광역시">
+
+                        <span class="region-pin"></span>
+
+                        인천광역시
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="region-option"
+                        data-region="부산광역시">
+
+                        <span class="region-pin"></span>
+
+                        부산광역시
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- 하단 네비게이션 -->
+    <nav class="bottom-nav">
+
+      <a href="index.html" class="nav-item" data-page="index">
+        <img src="./images/footer-icon/home.svg" alt="홈" class="nav-icon">
+        <span>홈</span>
+      </a>
+
+
+      <a href="custom-conditions.html" class="nav-item" data-page="custom-conditions">
+        <img src="./images/footer-icon/note.svg" alt="맞춤공고" class="nav-icon">
+        <span>맞춤공고</span>
+      </a>
+
+
+      <a href="schedule.html" class="nav-item" data-page="schedule">
+        <img src="./images/footer-icon/calinder.svg" alt="내 일정" class="nav-icon">
+        <span>내 일정</span>
+      </a>
+
+
+      <a href="estate-map.html" class="nav-item" data-page="estate-map">
+        <img src="./images/footer-icon/map.svg" alt="부동산 맵" class="nav-icon">
+        <span>부동산 맵</span>
+      </a>
+
+
+      <a href="application-status.html" class="nav-item" data-page="application-status">
+        <img src="./images/footer-icon/people.svg" alt="MY" class="nav-icon">
+        <span>MY</span>
+      </a>
+
+    </nav>
+
+  </footer>
+
+
+    <!-- ========================================
+         JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+
+        /* ========================================
+           지역 선택 팝업 열기
+        ======================================== */
+
+        const regionSelect =
+            document.getElementById("region-select");
+
+        const regionModal =
+            document.getElementById("region-modal");
+
+        const regionClose =
+            document.getElementById("region-close");
+
+        const selectedRegion =
+            document.getElementById("selected-region");
+
+
+        regionSelect.addEventListener("click", function () {
+
+            regionModal.classList.add("show");
+
+            document.body.style.overflow = "hidden";
+
+        });
+
+
+
+        /* ========================================
+           팝업 닫기
+        ======================================== */
+
+        function closeRegionModal() {
+
+            regionModal.classList.remove("show");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        regionClose.addEventListener(
+            "click",
+            closeRegionModal
+        );
+
+
+        regionModal.addEventListener("click", function (event) {
+
+            if (event.target === regionModal) {
+
+                closeRegionModal();
+
+            }
+
+        });
+
+
+
+        /* ========================================
+           지역 선택
+        ======================================== */
+
+        const regionOptions =
+            document.querySelectorAll(".region-option");
+
+
+        regionOptions.forEach(function (option) {
+
+            option.addEventListener("click", function () {
+
+                const region = this.dataset.region;
+
+                selectedRegion.textContent = region;
+
+                closeRegionModal();
+
+            });
+
+        });
+
+
+
+        /* ========================================
+           칩 선택
+        ======================================== */
+
+        function setupChipGroup(groupId) {
+
+            const group =
+                document.getElementById(groupId);
+
+            const chips =
+                group.querySelectorAll(".chip");
+
+
+            chips.forEach(function (chip) {
+
+                chip.addEventListener("click", function () {
+
+                    chips.forEach(function (item) {
+
+                        item.classList.remove("active");
+
+                    });
+
+
+                    this.classList.add("active");
+
+                });
+
+            });
+
+        }
+
+
+        setupChipGroup("rent-type-group");
+
+        setupChipGroup("household-group");
+
+
+
+        /* ========================================
+           소득분위 토글
+        ======================================== */
+
+        const incomeToggle =
+            document.getElementById("income-toggle");
+
+
+        incomeToggle.addEventListener("click", function () {
+
+            this.classList.toggle("active");
+
+
+            const isActive =
+                this.classList.contains("active");
+
+
+            this.setAttribute(
+                "aria-pressed",
+                isActive
+            );
+
+        });
+
+
+
+        /* ========================================
+           초기화
+        ======================================== */
+
+        const resetButton =
+            document.getElementById("reset-button");
+
+
+        resetButton.addEventListener("click", function () {
+
+
+            // 지역 초기화
+
+            selectedRegion.textContent =
+                "지역을 선택해 주세요";
+
+
+
+            // 임대 유형 초기화
+
+            document.querySelectorAll(".chip").forEach(
+                function (chip) {
+
+                    chip.classList.remove("active");
+
+                }
+            );
+
+
+            document.querySelector(
+                "#rent-type-group .chip"
+            ).classList.add("active");
+
+
+
+            // 소득분위 초기화
+
+            incomeToggle.classList.remove("active");
+
+            incomeToggle.setAttribute(
+                "aria-pressed",
+                "false"
+            );
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
