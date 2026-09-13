@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         })
 
+        
         .then(data => {
 
             footerContainer.innerHTML = data;
